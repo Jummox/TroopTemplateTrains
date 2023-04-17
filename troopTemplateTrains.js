@@ -4,7 +4,9 @@
    if($('#place_confirm_units').length && $('#troopTemplate').length == 0) {
 
       function buildTroopTemplateDiv() {
-         return $('<div id="troopTemplate" style="margin: auto;">'
+         return $('<tr>'
+                   + '<th colspan="100%">'
+                   + '<div id="troopTemplate" style="margin: auto;">'
                    + '<select id="troopTemplateSelect" style="font-size: 14px;">'
                    + '</select>'
                    + ' <img src="/graphic/overview/note.png" title="Die hier ausgew\u00e4hlte Vorlage wird beim Klicken der nebenstehenden Buttons verwendet.">'
@@ -12,7 +14,9 @@
                    + '<button id="newTemplate" class="btn">Neu</button>'
                    + '<button id="editTemplate" class="btn">Bearbeiten</button>'
                    + '<button id="deleteModal" class="btn">L\u00f6schen</button>'
-                + '</div>');
+                   + '</div>'
+                   + '</th>'
+                + '</tr>');
       }
 
       function buildModal() {
@@ -117,7 +121,7 @@
          allUnits.push($(th).find('a').attr('data-unit'));
       });
 
-      $('.attacks-templates').append(buildTroopTemplateDiv());
+      $('#place_confirm_units tbody').prepend(buildTroopTemplateDiv());
       createSelectOptions();
 
       $('body').append(buildModal());
